@@ -3,6 +3,9 @@ This "meet" app allows users to find and view events and meet-ups based on their
 
 It's a serverless, progressive web application (PWA) built with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
+## Deployment
+This app is deployed using [GitHub Pages](https://mthomp35.github.io/meet).
+
 # User Stories and Gerkhin Scenarios
 
 ### FEATURE 1: FILTER EVENTS BY CITY
