@@ -5,7 +5,7 @@ It's a serverless, progressive web application (PWA) built with React using a te
 
 # User Stories and Gerkhin Scenarios
 
-#### FEATURE 1: FILTER EVENTS BY CITY
+### FEATURE 1: FILTER EVENTS BY CITY
 **USER STORY:** As a user, I should be able to “filter events by city”, so that I can see the list of events that take place in that city.
 
 *Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.*
@@ -29,7 +29,7 @@ When: the user selects a city (e.g. “Berlin, Germany”) from the list
 Then: the city should be changed to the selection AND the user should receive a list of all upcoming events in the selected city sorted by date (earliest first)
 ```
 
-#### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
+### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 **USER STORY:** As a user, I should be able to "show/hide an event's details", so that I can view more information about an event as desired.
 
 *Scenario 1: An event element is collapsed by default.*
@@ -53,7 +53,7 @@ When: user clicks on the “Hide details” button for an event
 Then: the event element will be collapsed to hide the event details
 ```
 
-#### FEATURE 3: SPECIFY NUMBER OF EVENTS
+### FEATURE 3: SPECIFY NUMBER OF EVENTS
 **USER STORY:** As a user I should be able to “automatically see a reasonable amount of events which I can choose to adjust”, so that I see the optimum number of events that leads to a satisfying user experience.
 
 *Scenario 1: When the user hasn’t specified a number, 32 is the default number.*
@@ -70,7 +70,7 @@ When: the user enters a specified a number of events to view
 Then: the list of events will adjust to show the number specified by the user
 ```
 
-#### FEATURE 4: USE THE APP WHEN OFFLINE
+### FEATURE 4: USE THE APP WHEN OFFLINE
 **USER STORY:** As a user, I should be able to "view events I have recently viewed when the app is offline", so I can reference event details at any time.
 
 *Scenario 1: Show cached data when there’s no internet connection.*
@@ -87,7 +87,7 @@ When: the user changes the filter settings (city, time range) to ones that do no
 Then: show an error, notifying the user the app is offline and can only show recently access events (include the cities available to view in the cached data)
 ```
 
-#### FEATURE 5: DATA VISUALIZATION
+### FEATURE 5: DATA VISUALIZATION
 **USER STORY:** As a user I should be able to “have visual representations of data (i.e. charts)”, so that I can get see how many events are upcoming.
 
 *Scenario 1: Show a chart with the number of upcoming events in each city.*
