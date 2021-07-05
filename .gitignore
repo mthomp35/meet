@@ -8,7 +8,7 @@ jspm_packages
 .serverless
 
 #environment variables
-config.json
+/config.json
 
 # dependencies
 /node_modules
