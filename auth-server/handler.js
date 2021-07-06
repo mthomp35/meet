@@ -17,7 +17,7 @@ const credentials = {
   javascript_origins: ["https://mthomp35.github.io", "http://localhost:3000", "http://127.0.0.1:8080"],
 };
 const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
-const oAuth2Client = new google.auth.OAuth2(
+const oAuth2Client = new OAuth2(
   client_id,
   client_secret,
   redirect_uris[0]
@@ -44,7 +44,7 @@ module.exports.getAuthURL = async () => {
 
 module.exports.getAccessToken = async (event) => {
   // The values used to instantiate the OAuthClient are at the top of the file
-  const oAuth2Client = new google.auth.OAuth2(
+  const oAuth2Client = new OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
@@ -77,13 +77,16 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return {
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
         body: JSON.stringify(err),
       };
     });
 };
 
 module.exports.getCalendarEvents = async (event) => {
-  const oAuth2Client = new google.auth.OAuth2(
+  const oAuth2Client = new OAuth2(
     client_id,
     client_secret,
     redirect_uris[0]
@@ -127,6 +130,9 @@ module.exports.getCalendarEvents = async (event) => {
     console.error(err);
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify(err),
     };
   });
