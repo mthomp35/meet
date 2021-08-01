@@ -21,13 +21,32 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.overview').children()).toHaveLength(4);
   });
 
-  test('check for details button', () => {
+  test('check for show-details button', () => {
     const EventWrapper = shallow(<Event />);
-    expect(EventWrapper.find('.details')).toHaveLength(1);
+    expect(EventWrapper.find('.show-details')).toHaveLength(1);
   });
 
   test('when event component is rendered, details should be hidden', () => {
     const EventWrapper = shallow(<Event />);
+    expect(EventWrapper.state('showDetails')).toBe(false);
+  });
+
+  test('when details are hidden and show-details button is clicked, state should change to true and details should be expanded', () => {
+    const EventWrapper = shallow(<Event />);
+    EventWrapper.setState({ showDetails: false });
+    EventWrapper.find('.show-details').simulate('click');
+    expect(EventWrapper.state('showDetails')).toBe(true);
+  });
+
+  test('check for hide-details button', () => {
+    const EventWrapper = shallow(<Event />);
+    expect(EventWrapper.find('.hide-details')).toHaveLength(1);
+  });
+
+  test('when details are visible and hide-details button is clicked, state should change to false and details should be hidden', () => {
+    const EventWrapper = shallow(<Event />);
+    EventWrapper.setState({ showDetails: true });
+    EventWrapper.find('.hide-details').simulate('click');
     expect(EventWrapper.state('showDetails')).toBe(false);
   });
   

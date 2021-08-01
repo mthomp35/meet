@@ -5,6 +5,18 @@ class Event extends Component {
     showDetails: false
   }
 
+  handleToggleDetails = (details) => {
+    if(this.state.showDetails === false) {
+      this.setState({
+        showDetails: true
+      });
+    } else {
+      this.setState({ 
+        showDetails: false 
+      });
+    }
+  }
+
   render() {
     return (
       <div className='event'>
@@ -12,7 +24,16 @@ class Event extends Component {
           <h3>Event Name</h3>
           <p>Location</p>
           <p>Date and time</p>
-          <button className='details'>See Details</button>
+          <button 
+            className='show-details'
+            onClick={this.handleToggleDetails}
+          >See Details</button>
+        </div>
+        <div>
+          <button 
+            className='hide-details'
+            onClick={this.handleToggleDetails}
+          >Hide Details</button>
         </div>
       </div>
     );
