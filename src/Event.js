@@ -5,6 +5,7 @@ class Event extends Component {
     showDetails: false
   }
 
+  // UGLY - can this be simplified?
   handleToggleDetails = (details) => {
     if(this.state.showDetails === false) {
       this.setState({
