@@ -9,6 +9,11 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.event-count')).toHaveLength(1);
   });
 
+  test('Event count is labeled', () => {
+    const NumberOfEventsWrapper = shallow(<NumberOfEvents/>);
+    expect(NumberOfEventsWrapper.find('.event-count-label')).toHaveLength(1);
+  });
+
   test('default number of events is 32', () => {
     const NumberOfEventsWrapper = shallow(<NumberOfEvents/>);
     expect(NumberOfEventsWrapper.state('eventCount')).toBe(32);
