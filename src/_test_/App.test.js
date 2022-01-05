@@ -28,7 +28,7 @@ describe('<App /> component', () => {
 
 //test integrated components
 describe('<App /> integration', () => {
-  test('App passes "event" state as a prop to EventList', () => {
+  test('App passes "events" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
     const AppEventsState = AppWrapper.state('events');
     expect(AppEventsState).not.toEqual(undefined);
