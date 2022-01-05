@@ -4,14 +4,21 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 
-function App() {
-  return (
-    <div className='App'>
-      <CitySearch />
-      <EventList />
-      <NumberOfEvents />
-    </div>
-  );
+class App extends Component {
+  state = {
+    events: []
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <CitySearch />
+        <EventList />
+        <NumberOfEvents />
+      </div>
+    );
+  }
 }
+
 
 export default App;
