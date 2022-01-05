@@ -1,5 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { mockData } from '../mock-data';
+import { extractLocations } from '../api';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
