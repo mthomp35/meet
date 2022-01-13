@@ -29,7 +29,7 @@ Then: show a list of city options/suggestions that are the closest match to the 
 ```
 Given: the user begins entering a city into the filter (e.g. "Berlin") AND the list of suggested cities is showing
 When: the user selects a city (e.g. “Berlin, Germany”) from the list
-Then: the city should be changed to the selection AND the user should receive a list of all upcoming events in the selected city sorted by date (earliest first)
+Then: the city should be changed to the selection AND the list of suggestions should disappear AND the user should receive a list of all upcoming events in the selected city sorted by date (earliest first)
 ```
 
 ### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
