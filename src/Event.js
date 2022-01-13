@@ -19,12 +19,15 @@ class Event extends Component {
   }
 
   render() {
+    const showDetails = this.state.showDetails;
+    const { event } = this.props;
+
     return (
       <div className='event'>
         <div className='overview'>
-          <h3>Event Name</h3>
-          <p>Location</p>
-          <p>Date and time</p>
+          <h3>{event.summary}</h3>
+          <p className='location'>{event.location}</p>
+          <p className='start-date'>{event.start.dateTime} ({event.start.timeZone})</p>
           <button 
             className='show-details'
             onClick={this.handleToggleDetails}
