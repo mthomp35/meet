@@ -78,4 +78,24 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  test("get list of events matching the number of events selected by the user", async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 10 } };
+
+    NumberOfEventsWrapper.setState({ eventCount: 32 });
+    NumberOfEventsWrapper.find('.event-count').simulate('change', eventObject);
+
+    /* Include EventList in test */
+    const EventListWrapper = AppWrapper.find(EventList);
+    const eventsProp = EventListWrapper.props().events;
+    
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(eventObject.target.value);
+    
+    /* Additional tests for EventList */
+    expect(eventsProp.length).toEqual(eventObject.target.value);
+    expect(EventListWrapper.find('li')).toHaveLength(eventObject.target.value);
+    AppWrapper.unmount();
+  });
+
 });
