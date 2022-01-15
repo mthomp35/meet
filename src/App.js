@@ -9,7 +9,8 @@ import NumberOfEvents from './NumberOfEvents';
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    eventCount: 32,
   }
 
   componentDidMount() {
@@ -41,7 +42,7 @@ class App extends Component {
       <div className='App'>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
         <EventList events={this.state.events} />
-        <NumberOfEvents />
+        <NumberOfEvents eventCount={this.state.eventCount}/>
       </div>
     );
   }
