@@ -2,15 +2,24 @@ import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
   state = {
-    eventCount: 32
+    eventCount: 32,
+    errorText: ''
   }
 
-  handleCountChange = (count) => {
-    const value = count.target.value;
+  handleCountChange = (event) => {
+    const value = event.target.value;
+    if (value < 0 || value > 50) {
+      this.setState({
+        errorText: 'Select a number between 1 and 50'
+    });
+  } else {
     this.setState({ 
-      eventCount: value
+      eventCount: value,
+      errorText: ''
     });
   }
+    this.props.updateEvents(null, value);
+  };
 
   render() {
     return (
