@@ -81,7 +81,7 @@ describe('<App /> integration', () => {
   test("get list of events matching the number of events selected by the user", async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventObject = { target: { value: 10 } };
+    const eventObject = { target: { value: 1 } };
 
     NumberOfEventsWrapper.setState({ eventCount: 32 });
     NumberOfEventsWrapper.find('.event-count').simulate('change', eventObject);
