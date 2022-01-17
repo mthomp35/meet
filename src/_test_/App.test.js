@@ -78,23 +78,25 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test("get list of events matching the number of events selected by the user", async () => {
+  test('changing NumberOfEvents input value changes state of NumberOfEvents & App', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventObject = { target: { value: 1 } };
+    const eventObject = { target: { value: 12 } };
+    await NumberOfEventsWrapper.find('.event-count').simulate('change', eventObject);
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(12);
+    expect(AppWrapper.state('eventCount')).toBe(12);
+    AppWrapper.unmount();
+  });
 
-    NumberOfEventsWrapper.setState({ eventCount: 32 });
-    NumberOfEventsWrapper.find('.event-count').simulate('change', eventObject);
-
-    /* Include EventList in test */
-    const EventListWrapper = AppWrapper.find(EventList);
-    const eventsProp = EventListWrapper.props().events;
-    
-    expect(NumberOfEventsWrapper.state('eventCount')).toBe(eventObject.target.value);
-    
-    /* Additional tests for EventList */
-    expect(eventsProp.length).toEqual(eventObject.target.value);
-    expect(EventListWrapper.find('li')).toHaveLength(eventObject.target.value);
+  test('get list of events matching the number specified by the user', async () => {
+    const AppWrapper = mount( <App /> );
+    AppWrapper.setState({ eventCount: 10 });
+    const AppCountState = AppWrapper.state('eventCount');
+    await AppWrapper.instance().updateEvents('all', AppCountState);
+    const allEvents = await getEvents();
+    const eventsToShow = allEvents.slice(0, AppCountState);
+    expect(AppCountState).toBe(10);
+    expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
   });
 
