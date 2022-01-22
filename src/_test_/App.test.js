@@ -100,4 +100,16 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
+  /*test('changing NumberOfEvents input value yields that number of events in EventList', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const EventListWrapper = AppWrapper.find(EventList);
+    const eventObject = { target: { value: 2 } };
+    await NumberOfEventsWrapper.find('.event-count').simulate('change', eventObject);
+    expect(EventListWrapper.find('li')).toHaveLength(2);
+    expect(AppWrapper.find(EventList)).toHaveLength(2);
+    expect(EventListWrapper.find('.event').length).toBe(2);
+    AppWrapper.unmount();
+  });*/
+
 });
