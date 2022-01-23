@@ -1,7 +1,6 @@
 Feature: Show/hide an event's details
 
 Scenario: An event element is collapsed by default.
-
 Given the event list has loaded AND the user has not selected to view details of an event
 When user opens the app OR searches for a city
 Then show a list of event names without the details
