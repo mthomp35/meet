@@ -45,16 +45,19 @@ defineFeature(feature, test => {
   });
 
   test('User can collapse an event to hide its details.', ({ given, when, then }) => {
+    let EventWrapper;
     given('the event details are expanded', () => {
-
+      EventWrapper = mount(<Event event={mockData[0]} />);
+      EventWrapper.setState({ showDetails: true });
+      expect(EventWrapper.state('showDetails')).toBe(true);
     });
     
     when('user clicks on the “Hide details” button for an event', () => {
-      
+      EventWrapper.find('.hide-details').simulate('click');
     });
 
     then('the event element will be collapsed to hide the event details', () => {
-      
+      expect(EventWrapper.state('showDetails')).toBe(false);
     });
   });
 
