@@ -62,7 +62,8 @@ defineFeature(feature, test => {
     });
 
     then('the city should be changed to the selection', () => {
-
+      const CitySearchWrapper = AppWrapper.find(CitySearch);
+      expect(CitySearchWrapper.state('query')).toBe('Berlin, Germany');
     });
 
     and('the list of suggestions should disappear', () => {
@@ -70,7 +71,7 @@ defineFeature(feature, test => {
     });
 
     and('the user should receive a list of all upcoming events in the selected city sorted by date (earliest first)', () => {
-
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
 
   });
