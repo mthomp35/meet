@@ -46,8 +46,10 @@ defineFeature(feature, test => {
 
 
   test('User can select a city from the suggested list.', ({ given, and, when, then }) => {
-    given('the user begins entering a city into the filter (e.g. "Berlin")', () => {
-
+    let AppWrapper;
+    given('the user begins entering a city into the filter (e.g. "Berlin")', async () => {
+      AppWrapper = await mount(<App />);
+      AppWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
     });
 
     and('the list of suggested cities is showing', () => {
