@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from '../App';
 import CitySearch from '../CitySearch';
-import { extractLocations, getEvents } from '../api';
+import { extractLocations } from '../api';
 import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
@@ -25,16 +25,22 @@ defineFeature(feature, test => {
   });
 
   test('User should see a list of suggestions when they search for a city.', ({ given, when, then }) => {
-    given('the user is on the main page listing upcoming events', () => {
-
-    });
     let CitySearchWrapper;
+    given('the user is on the main page listing upcoming events', () => {
+      CitySearchWrapper = shallow(
+        <CitySearch 
+          updateEvents={() => {}} 
+          locations={extractLocations(mockData)} 
+        />
+      );
+    });
+    
     when('the user begins entering a city name into the filter', () => {
-      CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
+      CitySearchWrapper.find('.city').simulate('change', { target: { value: 'Berlin' } });
     });
 
     then('show a list of city options/suggestions that are the closest match to the user\'s entry', () => {
-
+      expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(2); //“See all cities” should be counted with Berlin to get length of 2 from the mock data.
     });
   });
 
