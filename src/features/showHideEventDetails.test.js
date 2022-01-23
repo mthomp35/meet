@@ -30,17 +30,17 @@ defineFeature(feature, test => {
 
   test('User can expand an event to see its details.', ({ given, when, then }) => {
     let EventWrapper;
-    let EventListWrapper;
     given('the list of events has been loaded', () => {
-      EventListWrapper = mount(<EventList events={mockData} />);
+      EventWrapper = mount(<Event event={mockData[0]} />);
     });
     
     when('user clicks on the “Show details” button for an event', () => {
+      EventWrapper.find('.show-details').simulate('click');
       
     });
 
     then('the event element will be expanded to show the event details', () => {
-      
+      expect(EventWrapper.state('showDetails')).toBe(true);
     });
   });
 
