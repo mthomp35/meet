@@ -53,7 +53,8 @@ defineFeature(feature, test => {
     });
 
     and('the list of suggested cities is showing', () => {
-
+      AppWrapper.update();
+      expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
 
     when('the user selects a city (e.g. “Berlin, Germany”) from the list', () => {
