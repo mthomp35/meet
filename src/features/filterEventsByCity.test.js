@@ -67,7 +67,9 @@ defineFeature(feature, test => {
     });
 
     and('the list of suggestions should disappear', () => {
-
+      const CitySearchWrapper = AppWrapper.find(CitySearch);
+      expect(CitySearchWrapper.state('showSuggestions')).toBe(false);
+      expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
     });
 
     and('the user should receive a list of all upcoming events in the selected city sorted by date (earliest first)', () => {
