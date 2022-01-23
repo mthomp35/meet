@@ -22,4 +22,33 @@ defineFeature(feature, test => {
       
     });
   });
+
+  test('User can expand an event to see its details.', ({ given, when, then }) => {
+    given('the list of events has been loaded', () => {
+
+    });
+    
+    when('user clicks on the “Show details” button for an event', () => {
+      
+    });
+
+    then('the event element will be expanded to show the event details', () => {
+      
+    });
+  });
+
+  test('User can collapse an event to hide its details.', ({ given, when, then }) => {
+    given('the event details are expanded', () => {
+
+    });
+    
+    when('user clicks on the “Hide details” button for an event', () => {
+      
+    });
+
+    then('the event element will be collapsed to hide the event details', () => {
+      
+    });
+  });
+
 });
