@@ -17,7 +17,8 @@ defineFeature(feature, test => {
     });
 
     then('show all upcoming events sorted by date (earliest first)', () => {
-
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
   });
 
