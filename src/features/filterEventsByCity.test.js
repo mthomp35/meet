@@ -1,7 +1,9 @@
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from '../App';
+import CitySearch from '../CitySearch';
+import { extractLocations, getEvents } from '../api';
 import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
@@ -26,9 +28,9 @@ defineFeature(feature, test => {
     given('the user is on the main page listing upcoming events', () => {
 
     });
-
+    let CitySearchWrapper;
     when('the user begins entering a city name into the filter', () => {
-
+      CitySearchWrapper = shallow(<CitySearch updateEvents={() => {}} locations={locations} />);
     });
 
     then('show a list of city options/suggestions that are the closest match to the user\'s entry', () => {
