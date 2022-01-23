@@ -41,6 +41,7 @@ defineFeature(feature, test => {
 
     then('the event element will be expanded to show the event details', () => {
       expect(EventWrapper.state('showDetails')).toBe(true);
+      expect(EventWrapper.find('.event_details')).toHaveLength(1);
     });
   });
 
@@ -48,7 +49,7 @@ defineFeature(feature, test => {
     let EventWrapper;
     given('the event details are expanded', () => {
       EventWrapper = mount(<Event event={mockData[0]} />);
-      EventWrapper.setState({ showDetails: true });
+      EventWrapper.find('.show-details').simulate('click');
       expect(EventWrapper.state('showDetails')).toBe(true);
     });
     
@@ -58,6 +59,7 @@ defineFeature(feature, test => {
 
     then('the event element will be collapsed to hide the event details', () => {
       expect(EventWrapper.state('showDetails')).toBe(false);
+      expect(EventWrapper.find('.event_details')).toHaveLength(0);
     });
   });
 
