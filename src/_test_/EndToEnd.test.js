@@ -1,9 +1,6 @@
 import puppeteer from 'puppeteer';
 
 describe('show/hide an event details', () => {
-  /* https://www.ionos.com/digitalguide/hosting/technical-matters/err-connection-refused/
-  https://github.com/puppeteer/puppeteer/issues/954
-  */
   let browser;
   let page;
   jest.setTimeout(30000);
@@ -35,7 +32,7 @@ describe('show/hide an event details', () => {
   });
 
   test('User can collapse an event to hide its details', async () => {
-    await page.click('.event .details-btn');
+    await page.click('.event .hide-details');
     const eventDetails = await page.$('.event .event_details');
     expect(eventDetails).toBeNull();
   });
