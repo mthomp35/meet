@@ -4,23 +4,27 @@ import { mount } from 'enzyme';
 import App from '../App';
 import Event from '../Event';
 import EventList from '../EventList';
+import NumberOfEvents from '../NumberOfEvents';
 import { mockData } from '../mock-data';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
-  test('When the user hasn’t specified a number, 32 is the default number.', ({ given, when, then }) => {
-    
+  test('When the user hasn\’t specified a number, 32 is the default number.', ({ given, when, then }) => {
+    let AppWrapper;
     given('the user has not specified a number of events to view', () => {
+      AppWrapper = mount(<App />);
       
     });
     
     when('the list of events has been loaded', () => {
-      
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
 
     then('a maximum of 32 events will automatically be shown in the list', () => {
-      
+      const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+      expect(NumberOfEventsWrapper.find('.event-count').prop('value')).toEqual(32);
     });
   });
 

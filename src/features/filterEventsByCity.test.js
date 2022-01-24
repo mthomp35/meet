@@ -9,7 +9,7 @@ import { mockData } from '../mock-data';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, test => {
-  test('When user hasn’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
+  test('When user hasn\’t searched for a city, show upcoming events from all cities.', ({ given, when, then }) => {
     given('the user has not searched for any city', () => {
 
     });
