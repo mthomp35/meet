@@ -29,17 +29,20 @@ defineFeature(feature, test => {
   });
 
   test('User can change the number of events they want to see.', ({ given, when, then }) => {
-    
-    given('the list of events has been loaded', () => {
-      
+    let AppWrapper;
+    given('the list of events has been loaded', async () => {
+      AppWrapper = await mount(<App />);
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
     
     when('the user enters a specified a number of events to view', () => {
-      
+      AppWrapper.find('.event-count').simulate('change', { target: { value: '1' } });
     });
 
     then('the list of events will adjust to show the number specified by the user', () => {
-      
+      AppWrapper.update();
+      expect(AppWrapper.find('.event')).toHaveLength(1);
     });
   });
 
