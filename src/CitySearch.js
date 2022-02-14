@@ -13,10 +13,18 @@ class CitySearch extends Component {
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
-    this.setState({ 
-      query: value,
-      suggestions,
-    });
+    if (suggestions.length === 0) {
+      this.setState({ 
+        query: value,
+        infoText: 'Oh no! We cannot find the city you are looking for. Please check the spelling or try entering a different city.',
+      });
+    } else {
+      return this.setState({
+        query: value,
+        suggestions,
+        infoText: ''
+      });
+    }
   }
 
   handleItemClicked = (suggestion) => {
