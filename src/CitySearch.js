@@ -1,3 +1,4 @@
+//needed: collapse menu when mouseclick outside of box; update general layout
 import React, { Component } from 'react';
 import { InfoAlert } from './Alert';
 
