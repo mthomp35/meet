@@ -43,8 +43,8 @@ input[type="number"] {
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 350px;
-  max-width: 350px;
+  flex-basis: 400px;
+  max-width: 400px;
   margin: auto;
   position: relative;
 }
