@@ -36,16 +36,19 @@ input[type="number"] {
   height: 38px;
 }
 
+.CitySuggestions {
+  top: 60px;
+}
+
 .city {
   width: 250px;
-  top: 60px;
 }
 
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 400px;
-  max-width: 400px;
+  flex-basis: 450px;
+  max-width: 450px;
   margin: auto;
   position: relative;
 }
