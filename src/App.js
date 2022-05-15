@@ -5,13 +5,15 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     eventCount: 32,
-    currentLocation: 'all'
+    currentLocation: 'all',
+    warningText: ''
   }
 
   componentDidMount() {
@@ -23,6 +25,16 @@ class App extends Component {
           locations: extractLocations(events) 
         });
       }
+      if (!navigator.onLine) {
+        this.setState({
+          warningText: 'You are currently offline. Events shown may not be up to date.'
+        });
+        
+      } else {
+        this.setState({
+          warningText: ''
+        });
+      }   
     });
   }
 
@@ -51,6 +63,9 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
+        <div className='offline-alert'>
+          <WarningAlert text={this.state.warningText} />
+        </div>
         <CitySearch 
           locations={this.state.locations} 
           updateEvents={this.updateEvents}
