@@ -12,7 +12,7 @@ class App extends Component {
     events: [],
     locations: [],
     eventCount: 32,
-    currentLocation: 'all',
+    currentLocation: 'All Cities',
     warningText: ''
   }
 
@@ -48,7 +48,7 @@ class App extends Component {
     number = number || this.state.eventCount;
 
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
+      const locationEvents = (location === 'All Cities') ?
       events : 
       events.filter((event) => event.location === location);
       const filteredEvents = locationEvents.slice(0, number);
