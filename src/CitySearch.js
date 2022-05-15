@@ -43,6 +43,7 @@ class CitySearch extends Component {
   render() {
     return (
       <div className='CitySearch'>
+        <b>Select a City to View Events:</b>
         <div>
           <InfoAlert text={this.state.infoText} />
         </div>
