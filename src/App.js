@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { getEvents, extractLocations } from './api';
+import { getEvents, extractLocations, getAccessToken, checkToken } from './api';
 import './App.css';
 import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { WarningAlert } from './Alert';
+import WelcomeScreen from './WelcomeScreen';
+import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 
 class App extends Component {
   state = {
@@ -13,32 +15,40 @@ class App extends Component {
     locations: [],
     eventCount: 32,
     currentLocation: 'All Cities',
-    warningText: ''
+    warningText: '',
+    showWelcomeScreen: undefined
   }
 
   componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ 
-          events: events.slice(0, this.state.eventCount), 
-          locations: extractLocations(events) 
-        });
-      }
-      if (!navigator.onLine) {
-        this.setState({
-          warningText: 'You are currently offline. Events shown may not be up to date.'
-        });
-        
-      } else {
-        this.setState({
-          warningText: ''
-        });
-      }   
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ 
+            events: events.slice(0, this.state.eventCount), 
+            locations: extractLocations(events) 
+          });
+        }
+        if (!navigator.onLine) {
+          this.setState({
+            warningText: 'You are currently offline. Events shown may not be up to date.'
+          });
+          
+        } else {
+          this.setState({
+            warningText: ''
+          });
+        }   
+      });
+    }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.mounted = false;
   }
 
@@ -61,6 +71,7 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) return <div className='App' />
     return (
       <div className='App'>
         <div className='offline-alert'>
@@ -75,6 +86,7 @@ class App extends Component {
           updateEvents={this.updateEvents}
         />
         <EventList events={this.state.events} />
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
