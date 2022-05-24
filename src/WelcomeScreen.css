@@ -42,6 +42,7 @@
 
 .google-icon-wrapper {
   position: absolute;
+  float: left;
   margin-top: 1px;
   margin-left: 1px;
   width: 40px;
