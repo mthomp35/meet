@@ -27,7 +27,6 @@
   width: 184px;
   height: 42px;
   margin: 1rem;
-  background-color: pink;
   /*border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);*/
 }
@@ -42,13 +41,11 @@
 
 .google-icon-wrapper {
   position: absolute;
-  float: left;
   margin-top: 1px;
   margin-left: 1px;
   width: 40px;
   height: 40px;
   border-radius: 2px;
-  background-color: yellow;
 }
 
 .google-icon {
