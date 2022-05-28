@@ -1,5 +1,6 @@
 //needed: collapse menu when mouseclick outside of box; make sure error text can be seen when suggestion box is open; update general layout
 import React, { Component } from 'react';
+import Select from 'react-select';
 import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
