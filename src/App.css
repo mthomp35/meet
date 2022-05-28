@@ -110,8 +110,22 @@ input[type="number"] {
 }
 
 .google-btn {
-  background-color: #f5a299;
+  background-color: #f6b5ae;
   border-color: #fa8072;
+  border-radius: 4px;
+  padding: 3px;
+  margin-bottom: 10px;
+  max-width: 150px
+}
+
+.google-btn:hover {
+  cursor: pointer;
+  background-color: #fa8072;
+}
+
+.show-details, .hide-details:hover {
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .name {
