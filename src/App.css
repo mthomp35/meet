@@ -109,6 +109,11 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.google-btn {
+  background-color: #f5a299;
+  border-color: #fa8072;
+}
+
 .name {
   font-size: 18px;
   font-weight: 600;
