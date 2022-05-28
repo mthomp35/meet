@@ -117,6 +117,7 @@ input[type="number"] {
 .google-btn {
   background-color: #f6b5ae;
   border-color: #fa8072;
+  color: #000;
   border-radius: 4px;
   padding: 3px;
   margin-bottom: 10px;
@@ -131,6 +132,7 @@ input[type="number"] {
 .show-details, .hide-details {
   margin-top: 10px;
   border-radius: 4px;
+  color: #000
 }
 
 .show-details, .hide-details:hover {
