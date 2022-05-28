@@ -58,12 +58,14 @@ class CitySearch extends Component {
             onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
           <ul className='suggestions' style={this.state.showSuggestions ? {}: { display: 'none' }}>
-            <Select {...this.state.suggestions.map((suggestion) => (
+             {this.state.suggestions.map((suggestion) => (
               <li 
                 key={suggestion}
                 onClick={() => this.handleItemClicked(suggestion)}
-              >{suggestion}</li>
-            ))} />
+              >
+                <Select suggestion={suggestion} />
+              </li>
+            ))}
             <li 
               key='All Cities'
               onClick={() => this.handleItemClicked('All Cities')}
