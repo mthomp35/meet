@@ -25,7 +25,7 @@ class Event extends Component {
     return (
       <div className='event'>
         <div className='overview'>
-          <h3>{event.summary}</h3>
+          <h3 className='event-title'>{event.summary}</h3>
           <p className='location'>{event.location}</p>
           <p className='start-date'>{event.start.dateTime} ({event.start.timeZone})</p>
           
