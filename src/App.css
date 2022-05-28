@@ -107,6 +107,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  color: #9677bc
 }
 
 .google-btn {
@@ -123,9 +124,14 @@ input[type="number"] {
   background-color: #fa8072;
 }
 
+.show-details, .hide-details {
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
 .show-details, .hide-details:hover {
   cursor: pointer;
-  margin-top: 10px;
+  background-color: rgba(239, 239, 239, 0.847);
 }
 
 .name {
