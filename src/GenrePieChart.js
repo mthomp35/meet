@@ -2,15 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const GenrePieChart = ({events}) => {
-  const data = [
+  /*const data = [
   { name: 'Group A', value: 400 },
   { name: 'Group B', value: 300 },
   { name: 'Group C', value: 300 },
   { name: 'Group D', value: 200 },
-  ];
+  ];*/
+  const [data, setData] = useState([]);
 
+  useEffect(() => { setData(() => getData()); }, [events]);
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  const getData = () => {
+    const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+    const data = genres.map((genre) => {
+      const value = filter(({summary}) => summary.split(' ').includes(genre)).length;
+      return { name: genre, value }
+    });
+    return data;
+  };
+
+  
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 /*const RADIAN = Math.PI / 180;
 
