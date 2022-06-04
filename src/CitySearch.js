@@ -1,14 +1,32 @@
 //needed: collapse menu when mouseclick outside of box; make sure error text can be seen when suggestion box is open; update general layout
 import React, { Component } from 'react';
-import Select from 'react-select';
 import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
   state = {
+    activeIndex: 0,
     query: '',
     suggestions: [],
     showSuggestions: false,
     infoText: ''
+  }
+
+  componentDidMount() {
+    window.addEventListener("keyup", (e) => {
+      if (!this.state.showSuggestions) return;
+      if (!['ArrowUp', 'ArrowDown', 'Space', 'Enter'].includes(e.code)) return;
+       e.preventDefault();
+        
+       if (e.code === 'ArrowDown') {
+        this.setState({
+          activeIndex: (this.state.activeIndex + 1 >= this.state.suggestions.length) ? 0 : this.state.activeIndex + 1}); 
+        } else if (e.code === 'ArrowUp') {
+          this.setState({
+            activeIndex: (this.state.activeIndex === 0) ? this.state.suggestions.length - 1 : this.state.activeIndex - 1});
+        } else {
+            this.handleItemClicked(this.state.suggestions[this.state.activeIndex]);
+        }
+    })
   }
 
   handleInputChanged = (event) => {
@@ -23,6 +41,7 @@ class CitySearch extends Component {
       });
     } else {
       return this.setState({
+        showSuggestions: true,
         query: value,
         suggestions,
         infoText: ''
@@ -58,11 +77,11 @@ class CitySearch extends Component {
             onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
           <ul className='suggestions' style={this.state.showSuggestions ? {}: { display: 'none' }}>
-             {this.state.suggestions.map((suggestion) => (
+             {this.state.suggestions.map((suggestion, i) => (
               <li 
-                key={suggestion}
+                key={i}
                 onClick={() => this.handleItemClicked(suggestion)}
-              >{suggestion}</li>
+              >{i === this.state.activeIndex && '-->'} {suggestion}</li>
             ))}
             <li 
               key='All Cities'
