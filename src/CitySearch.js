@@ -11,6 +11,24 @@ class CitySearch extends Component {
     infoText: ''
   }
 
+  componentDidMount() {
+    window.addEventListener("keyup", (e) => {
+      if (!this.state.showSuggestions) return;
+      if (!['ArrowUp', 'ArrowDown', 'Space', 'Enter'].includes(e.code)) return;
+       e.preventDefault();
+        
+       if (e.code === 'ArrowDown') {
+        this.setState({
+          activeIndex: (this.state.activeIndex + 1 >= this.state.suggestions.length) ? 0 : this.state.activeIndex + 1}); 
+        } else if (e.code === 'ArrowUp') {
+          this.setState({
+            activeIndex: (this.state.activeIndex === 0) ? this.state.suggestions.length - 1 : this.state.activeIndex - 1});
+        } else {
+            this.handleItemClicked(this.state.suggestions[this.state.activeIndex]);
+        }
+    })
+  }
+
   handleInputChanged = (event) => {
     const value = event.target.value;
     const suggestions = this.props.locations.filter((location) => {
