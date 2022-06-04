@@ -7,10 +7,10 @@ const GenrePieChart = ({events}) => {
 
   useEffect(() => { setData(() => getData()); }, [events]);
 
-  const getData = () => {
+  const getData = (events) => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
     const data = genres.map((genre) => {
-      const value = filter(({summary}) => summary.split(' ').includes(genre)).length;
+      const value = events.filter(({summary}) => summary.split(' ').includes(genre)).length;
       return { name: genre, value }
     });
     return data;
