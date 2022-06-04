@@ -82,7 +82,7 @@ class CitySearch extends Component {
               <li 
                 key={i}
                 onClick={() => this.handleItemClicked(suggestion)}
-              >{suggestion}</li>
+              >{i === this.state.activeIndex && '-->'} {suggestion}</li>
             ))}
             <li 
               key='All Cities'
