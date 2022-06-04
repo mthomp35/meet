@@ -1,26 +1,18 @@
-import React, { Component } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import React, { useEffect, useState } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-/*const data = [
+const GenrePieChart = ({events}) => {
+  const data = [
   { name: 'Group A', value: 400 },
   { name: 'Group B', value: 300 },
   { name: 'Group C', value: 300 },
   { name: 'Group D', value: 200 },
-];*/
+  ];
 
-getData = () => {
-  const {locations, events} = this.state;
-  const data = locations.map((location)=>{
-    const number = events.filter((event) => event.location === location).length
-    const city = location.split(', ').shift() //shift() returns first element in array
-    return {city, number};
-  })
-  return data;
-}
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const RADIAN = Math.PI / 180;
+/*const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -32,12 +24,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
-};
-
-export default class GenrePieChart extends Component {
-  static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-label-dlhhj';
-
-  render() {
+};*/
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart width={400} height={400}>
@@ -46,7 +33,7 @@ export default class GenrePieChart extends Component {
             cx="50%"
             cy="50%"
             labelLine={false}
-            label={renderCustomizedLabel}
+            //label={renderCustomizedLabel}
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
@@ -58,5 +45,6 @@ export default class GenrePieChart extends Component {
         </PieChart>
       </ResponsiveContainer>
     );
-  }
 }
+
+export default GenrePieChart;
