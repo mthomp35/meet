@@ -135,9 +135,9 @@ input[type="number"] {
   color: #000
 }
 
-.show-details, .hide-details:hover {
+.show-details:hover, .hide-details:hover {
   cursor: pointer;
-  background-color: rgba(239, 239, 239, 0.847);
+  background-color: #a9a9a9;
 }
 
 .name {
