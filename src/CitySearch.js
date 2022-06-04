@@ -78,9 +78,9 @@ class CitySearch extends Component {
             onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
           <ul className='suggestions' style={this.state.showSuggestions ? {}: { display: 'none' }}>
-             {this.state.suggestions.map((suggestion) => (
+             {this.state.suggestions.map((suggestion, i) => (
               <li 
-                key={suggestion}
+                key={i}
                 onClick={() => this.handleItemClicked(suggestion)}
               >{suggestion}</li>
             ))}
