@@ -23,6 +23,7 @@ class CitySearch extends Component {
       });
     } else {
       return this.setState({
+        showSuggestions: true,
         query: value,
         suggestions,
         infoText: ''
