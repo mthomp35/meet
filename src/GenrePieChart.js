@@ -34,7 +34,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-export default class PieChart extends Component {
+export default class GenrePieChart extends Component {
   static demoUrl = 'https://codesandbox.io/s/pie-chart-with-customized-label-dlhhj';
 
   render() {
