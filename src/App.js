@@ -83,6 +83,8 @@ class App extends Component {
   }
 
   render() {
+    const { events } = this.state;
+
     if (this.state.showWelcomeScreen === undefined) return <div className='App' />
     return (
       <div className='App'>
@@ -99,7 +101,7 @@ class App extends Component {
         />
         <h4>Events in each city</h4>
         <div className='data-vis-wrapper'>
-          <GenrePieChart events={this.state.events}/>
+          <GenrePieChart events={events}/>
           <ResponsiveContainer height={400} className='recharts-responsive-container'>
             <ScatterChart
               margin={{
@@ -114,7 +116,7 @@ class App extends Component {
             </ScatterChart>
           </ResponsiveContainer>
         </div>
-        <EventList events={this.state.events} />
+        <EventList events={events} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
