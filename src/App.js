@@ -101,7 +101,9 @@ class App extends Component {
         />
         <h4>Events in each city</h4>
         <div className='data-vis-wrapper'>
-          <GenrePieChart events={events}/>
+          <div>
+            <GenrePieChart events={events}/>
+          </div>
           <ResponsiveContainer height={400} className='recharts-responsive-container'>
             <ScatterChart
               margin={{
