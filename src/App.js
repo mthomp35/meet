@@ -8,7 +8,6 @@ import NumberOfEvents from './NumberOfEvents';
 import { WarningAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
 import GenrePieChart from './GenrePieChart';
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers';
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 class App extends Component {
