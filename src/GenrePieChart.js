@@ -7,6 +7,7 @@ const GenrePieChart = ({events}) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { setData(() => getData()); }, [events]);
 
+  //problem: the map function does not return an accurate count of the listed genres. e.g. AngularJS is not counted under Angular
   const getData = () => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
     const data = genres.map((genre) => {
