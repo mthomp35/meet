@@ -1,3 +1,5 @@
+//TO DO: How to remove the label when no events exist
+
 import React, { useEffect, useState } from 'react';
 import { PieChart, Legend, Pie, Cell, ResponsiveContainer } from 'recharts';
 
@@ -7,11 +9,10 @@ const GenrePieChart = ({events}) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { setData(() => getData()); }, [events]);
 
-  //problem: the map function does not return an accurate count of the listed genres. e.g. AngularJS is not counted under Angular
   const getData = () => {
     const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
     const data = genres.map((genre) => {
-      const value = events.filter(({summary}) => summary.split(' ').includes(genre)).length;
+      const value = events.filter(({summary}) => summary.includes(genre)).length;
       return { name: genre, value }
     });
     console.log(data);
@@ -33,7 +34,8 @@ const GenrePieChart = ({events}) => {
           <Pie
             data={data}
             labelLine={false}
-            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+            // option for a percentage label vs absolute event count -> label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+            label={({ name, value }) => `${name} ${value}`}
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
