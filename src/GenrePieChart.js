@@ -20,7 +20,7 @@ const GenrePieChart = ({events}) => {
     
   };
 
-  //const COLORS = ['#a8a5df', '#c5ecd9', '#bebbbb', '#f6b5ae', '#72e1fa']; //'#f3eb4f', '#9677bc' teal#00C49F
+  //additional color options '#c5ecd9', '#bebbbb', '#f6b5ae', '#72e1fa', '#f3eb4f', '#9677bc' teal#00C49F
   const COLORS = ['#a8a5df', '#83a6ed', '#8dd1e1', '#82ca9d', '#d0ed57'];
 
     return (
